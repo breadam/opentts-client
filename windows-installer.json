@@ -1,0 +1,5 @@
+{
+    "src": "\"dist/electron/Packaged/OpenTTS Client-win32-x64\"",
+    "dest": "\"dist/installers/\"",
+    "exe": "OpenTTS Client.exe"
+}
