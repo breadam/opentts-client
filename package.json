@@ -28,6 +28,7 @@
     "@quasar/app-vite": "^1.0.0",
     "autoprefixer": "^10.4.2",
     "electron": "^21.1.1",
+    "electron-builder": "^22.14.13",
     "electron-packager": "^15.5.2",
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.1.0",

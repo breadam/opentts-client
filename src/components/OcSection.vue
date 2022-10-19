@@ -6,6 +6,9 @@
     <q-item-section side>
       <q-btn :icon="playIcon" round flat @click="play" :loading="loading" :disabled="loading"></q-btn>
     </q-item-section>
+    <q-item-section side>
+      <q-btn icon="download" round flat @click="downloadFile" :loading="loading" :disabled="loading"></q-btn>
+    </q-item-section>
   </q-item>
 </template>
 <script>

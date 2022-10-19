@@ -3,25 +3,25 @@
     <div class="text-h5 q-my-md">{{$t('settings')}}</div>
     <div class="row q-col-gutter-md col-auto">
       <div class="col-4">
-        <q-file outlined :label="$t('source')" v-model="path"></q-file>
+        <q-file outlined :label="$t('source')" v-model="path" :disable="isPlaying"></q-file>
       </div>
       <div class="col-3">
-        <q-select outlined :label="$t('delimiter')" :options="delimiterOptions" v-model="selectedDelimiter" clearable></q-select>
+        <q-select outlined :label="$t('delimiter')" :options="delimiterOptions" v-model="selectedDelimiter" clearable :disable="isPlaying"></q-select>
       </div>
       <div class="col-3">
-        <q-input outlined :label="$t('openttsServer')" v-model="serverURL"></q-input>
+        <q-input outlined :label="$t('openttsServer')" v-model="serverURL" :disable="isPlaying"></q-input>
       </div>
     </div>
     <div class="row q-col-gutter-md q-my-md">
       <div class="col-2">
-        <q-select outlined :label="$t('language')" :options="languages" v-model="selectedLanguage"></q-select>
+        <q-select outlined :label="$t('language')" :options="languages" v-model="selectedLanguage" :disable="isPlaying"></q-select>
       </div>
       <div class="col-3">
         <q-select outlined :label="$t('voice')" :options="voices" v-model="selectedVoice" :option-label="voiceLabel"
-          option-value="id"></q-select>
+          option-value="id" :disable="isPlaying"></q-select>
       </div>
       <div class="col-3">
-        <q-select outlined :label="$t('speaker')" :options="speakers" v-model="selectedSpeaker" v-if="speakers">
+        <q-select outlined :label="$t('speaker')" :options="speakers" v-model="selectedSpeaker" v-if="speakers.length > 0" :disable="isPlaying">
         </q-select>
       </div>
     </div>
@@ -58,7 +58,7 @@ export default defineComponent({
     const speech = useSpeechStore();
     const opentts = useOpenTTSStore();
 
-    const { title, path, sections, delimiters, selectedDelimiter, text } = storeToRefs(speech);
+    const { title, path, sections, delimiters, selectedDelimiter, text,isPlaying } = storeToRefs(speech);
     const { serverURL, languages, voices, selectedLanguage, selectedVoice, selectedSpeaker } = storeToRefs(opentts);
 
     const delimiterOptions = computed(() => delimiters.value.map(d => ({ value: d.id, label: t(d.id), format: d.format })));
@@ -119,12 +119,13 @@ export default defineComponent({
     });
 
     return {
+      isPlaying,
       serverURL,
       path,
       delimiterOptions,
       languages,
       voices,
-      speakers: computed(() => selectedVoice.value ? Object.entries(selectedVoice.value.speakers).map(s => s[0]) : []),
+      speakers: computed(() => selectedVoice.value && selectedVoice.value.speakers ? Object.entries(selectedVoice.value.speakers).map(s => s[0]) : []),
       sections,
       selectedDelimiter,
       selectedVoice,

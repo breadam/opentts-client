@@ -28,6 +28,7 @@ export const useSpeechStore = defineStore('speech', {
     },
     getters: {
         delimiter: (state) => state.selectedDelimiter?.format,
+        isPlaying: (state) => state.currentPlaying !== -1 ? !state.sections[state.currentPlaying].audio?.paused : false,
     },
     actions: {
 
