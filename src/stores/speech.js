@@ -88,7 +88,9 @@ export const useSpeechStore = defineStore('speech', {
 
         downloadSection(index){
             const data = this.sections[index].data;
-            download(data, this.title + '-' + index + '.wav', data.type);
+            const text = this.sections[index].text;
+            const title = text.toLowerCase().split(' ').slice(0,3).join('-');
+            download(data, index + '-' +  title +'.wav', data.type);
         }
     },
 });

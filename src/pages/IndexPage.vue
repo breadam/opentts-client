@@ -3,13 +3,13 @@
     <div class="text-h5 q-my-md">{{$t('settings')}}</div>
     <div class="row q-col-gutter-md col-auto">
       <div class="col-4">
-        <q-file outlined :label="$t('source')" v-model="path" :disable="isPlaying"></q-file>
+        <q-file outlined :label="$t('source')" v-model="path" :disable="isPlaying" clearable></q-file>
       </div>
       <div class="col-3">
         <q-select outlined :label="$t('delimiter')" :options="delimiterOptions" v-model="selectedDelimiter" clearable :disable="isPlaying"></q-select>
       </div>
       <div class="col-3">
-        <q-input outlined :label="$t('openttsServer')" v-model="serverURL" :disable="isPlaying"></q-input>
+        <q-input outlined :label="$t('openttsServer')" v-model="serverURL" placeholder="http://localhost:5500" :disable="isPlaying"></q-input>
       </div>
     </div>
     <div class="row q-col-gutter-md q-my-md">
