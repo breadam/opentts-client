@@ -1,6 +1,6 @@
 {
   "name": "opentts-client-app",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "OpenTTS Client",
   "productName": "OpenTTS Client",
   "author": "Cagatay Yaman <cagatay@breadam.com>",
