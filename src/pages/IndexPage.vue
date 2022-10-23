@@ -146,7 +146,7 @@ export default defineComponent({
           }
           const text = section.text;
           const title = text.toLowerCase().split(' ').slice(0,3).join('-');
-          await zipWriter.add(index + '-' +  title + '.wav', new BlobReader(section.data));
+          await zipWriter.add(title + '.wav', new BlobReader(section.data));
         }
 
         const blob = await zipWriter.close();

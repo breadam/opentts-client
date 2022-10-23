@@ -90,7 +90,7 @@ export const useSpeechStore = defineStore('speech', {
             const data = this.sections[index].data;
             const text = this.sections[index].text;
             const title = text.toLowerCase().split(' ').slice(0,3).join('-');
-            download(data, index + '-' +  title +'.wav', data.type);
+            download(data, title +'.wav', data.type);
         }
     },
 });
